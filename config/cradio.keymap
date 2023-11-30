@@ -25,13 +25,12 @@ name: name##_macro {                      \
 / {
     behaviors {
         ht: hold_tap {
-            label = "hold_tap";
             compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
             #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
             flavor = "tap-preferred";
-            tapping-term-ms = <100>;
-            quick-tap-ms = <100>;
-            require-prior-idle-ms = <50>;
             bindings = <&kp>, <&kp>;
         };
 
@@ -234,7 +233,7 @@ name: name##_macro {                      \
         //├──────────┼───────────┼─────────────┼───────────────┼───────────┤         ├───────────┼─────────────┼──────────┼──────────┼────────────┤
         //│    []    │    {}     │    ()       │   SHIFT TAB   │   CTRL    │         │     0     │      4      │     5    │     6    │  RETURN    │
             &td_brc    &td_cbr     &td_rbr       &ht LSHFT TAB   &kp LCTRL             &kp N0      &kp N4        &kp N5     &kp N6     &kp RETURN
-        //├──────────┼───────────┼─────────────┼───────────────┼───────────┤         ├───────────┼─────────────┼──────────┼──────────┼────────────┤
+        //├──────────┼──────────┼─────────────┼───────────────┼───────────┤         ├───────────┼─────────────┼──────────┼──────────┼────────────┤
         //│     \    │     ~     │    ,.       │               │     "     │         │     =     │      1      │     2    │     3    │            │
             &kp BSLH   &kp TILDE   &td_com_dot   &none           &kp DQT               &kp EQUAL   &kp N1        &kp N2     &kp N3     &mak_l4
         //╰──────────┴───────────┴─────────────┼───────────────┼───────────┤         ├───────────┼─────────────┼──────────┴──────────┴────────────╯
