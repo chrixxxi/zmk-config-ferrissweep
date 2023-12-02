@@ -255,7 +255,7 @@ name: name##_macro {                      \
             bindings = <
  //╭──────────────┬──────────────┬──────────────┬──────────────┬──────────────╮   ╭──────────┬────────────┬──────────┬───────────┬───────────╮
  //│ BT PROFILE 1 │ BT PROFILE 2 │ BT PROFILE 3 │ BT PROFILE 4   BT PROFILE 5 │   │          │   HOME     │          │   END     │   BSPC    │
-     &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_SEL 5       &none      &kp HOME     &none      &kp END     &kp BSPC
+     &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 5   &bt BT_SEL 4       &none      &kp HOME     &none      &kp END     &kp BSPC
  //├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤   ├──────────┼────────────┼──────────┼───────────┼───────────┤
  //│   TAB        │   LALT S     │    LCTRL D   │    LSFT F    │              │   │   LEFT   │   DOWN     │    UP    │   RIGHT   │   RETURN  │
      &kp TAB        &ht LALT S     &ht LCTRL D    &ht LSFT F     &none              &kp LEFT   &kp DOWN     &kp UP     &kp RIGHT  &kp RETURN
