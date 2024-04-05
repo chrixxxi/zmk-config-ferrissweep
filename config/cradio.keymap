@@ -41,20 +41,6 @@ name: name##_macro {                      \
             tapping-term-ms = <TAP_TERM_DEFAULT>;
             bindings = <&kp SEMI>, <&kp SQT>;
         };
-        td_c_ret: tap_dance_c_ret {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_C_RET";
-            #binding-cells = <0>;
-            tapping-term-ms = <TAP_TERM_DEFAULT>;
-            bindings = <&kp C>, <&kp RET>;
-        };
-        td_v_bspc: tap_dance_v_bspc {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_V_BSPC";
-            #binding-cells = <0>;
-            tapping-term-ms = <TAP_TERM_DEFAULT>;
-            bindings = <&kp V>, <&kp BSPC>;
-        };
         td_com_tab: tap_dance_com_tab {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_COM_TAB";
@@ -195,6 +181,13 @@ name: name##_macro {                      \
             tapping-term-ms = <TAP_TERM_DEFAULT>;
             bindings = <&mak_l2>, <&kp RETURN>;
         };
+        td_v_l3: tap_dance_v_l3 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_V_L3";
+            #binding-cells = <0>;
+            tapping-term-ms = <TAP_TERM_DEFAULT>;
+            bindings = <&kp V>, <&mak_l3>;
+        };
     };
 
     macros {
@@ -210,18 +203,18 @@ name: name##_macro {                      \
 
         green_layer {
             bindings = <
-        //╭──────────┬──────────┬─────────────┬──────────────┬──────────╮       ╭─────────────────┬──────────┬─────────────────┬──────────┬────────────────╮
-        //│  Q       │  W       │    E        │   R          │  T       │       │  Y              │  U       │         I       │  O       │        P       │
-            &kp Q      &kp W        &kp E        &kp R         &kp T              &kp Y             &kp U      &kp I             &kp O      &kp P
-        //├──────────┼──────────┼─────────────┼──────────────┼──────────┤       ├─────────────────┼──────────┼─────────────────┼──────────┼────────────────┤
-        //│  A       │  S       │    D        │   F          │  G       │       │  H              │  J       │         K       │  L       │       ' "      │
-            &kp A      HRML(S,          D,        F)           &kp G              &kp H             HRMR(J,          K,           L)        &td_sem_dqt
-        //├──────────┼──────────┼─────────────┼──────────────┼──────────┤       ├─────────────────┼──────────┼─────────────────┼──────────┼────────────────┤
-        //│  Z       │  X       │    C        │   V          │  B       │       │  N              │  M       │        , <      │ . >      │       / ?      │
-            &kp Z      &kp X      &td_c_ret     &td_v_bspc     &kp B              &kp N             &kp M      &td_com_tab       &kp DOT    &kp FSLH
-        //╰──────────┴──────────┴─────────────┼──────────────┼──────────┤       ├─────────────────┼──────────┼─────────────────┴──────────┴────────────────╯
-                                                   &mak_l3     &kp SPACE          &td_lsw_return   &kp ESCAPE
-        //                                        ╰──────────┴──────────╯       ╰─────────────────┴──────────╯
+        //╭──────────┬──────────┬─────────────┬───────────────┬──────────╮       ╭─────────────────┬──────────┬─────────────────┬──────────┬────────────────╮
+        //│  Q       │  W       │    E        │   R           │  T       │       │  Y              │  U       │         I       │  O       │        P       │
+            &kp Q      &kp W        &kp E        &kp R          &kp T              &kp Y             &kp U      &kp I             &kp O      &kp P
+        //├──────────┼──────────┼─────────────┼───────────────┼──────────┤       ├─────────────────┼──────────┼─────────────────┼──────────┼────────────────┤
+        //│  A       │  S       │    D        │   F           │  G       │       │  H              │  J       │         K       │  L       │       ' "      │
+            &kp A      HRML(S,          D,        F)            &kp G              &kp H             HRMR(J,          K,           L)        &td_sem_dqt
+        //├──────────┼──────────┼─────────────┼───────────────┼──────────┤       ├─────────────────┼──────────┼─────────────────┼──────────┼────────────────┤
+        //│  Z       │  X       │    C        │   V           │  B       │       │  N              │  M       │        , <      │ . >      │       / ?      │
+            &kp Z      &kp X      &kp C         &td_v_l3        &kp B              &kp N             &kp M      &td_com_tab       &kp DOT    &kp FSLH
+        //╰──────────┴──────────┴─────────────┼───────────────┼──────────┤       ├─────────────────┼──────────┼─────────────────┴──────────┴────────────────╯
+                                                   &kp RETURN   &kp SPACE          &td_lsw_return   &kp ESCAPE
+        //                                        ╰───────────┴──────────╯       ╰─────────────────┴──────────╯
             >;
         };
 
@@ -286,9 +279,9 @@ name: name##_macro {                      \
             &kp A      &kp S        &kp D        &kp F         &kp G              &kp H          &kp J          &kp K             &kp L            &td_sem_dqt
         //├──────────┼──────────┼─────────────┼──────────────┼──────────┤       ├──────────────┼──────────────┼─────────────────┼────────────────┼────────────────┤
         //│  Z       │  X       │    C        │   V          │  B       │       │  N           │  M           │        , <      │ . >            │       / ?      │
-            &kp Z      &kp X      &td_c_ret     &td_v_bspc     &kp B              &kp N          &kp M          &td_com_tab       &kp DOT          &kp FSLH
+            &kp Z      &kp X      &kp C         &kp V          &kp B              &kp N          &kp M          &td_com_tab       &kp DOT          &kp FSLH
         //╰──────────┴──────────┴─────────────┼──────────────┼──────────┤       ├──────────────┼──────────────┼─────────────────┴────────────────┴────────────────╯
-                                                   &mak_l1     &kp SPACE          &kp SPACE      &kp RALT    
+                                                   &mak_l1     &kp SPACE          &kp SPACE      &kp RALT
         //                                        ╰──────────┴──────────╯       ╰──────────────┴──────────────╯
             >;
         };
