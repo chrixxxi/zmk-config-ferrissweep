@@ -38,7 +38,39 @@ name: name##_macro {                      \
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
-
+        td_b_gam_ret: behavior_tap_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            bindings = <&lt L_BLUE RETURN>, <&lt L_GAMING RETURN>;
+        };
+        td_h_neg: tap_dance_h_neg {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_H_NEG";
+            #binding-cells = <0>;
+            tapping-term-ms = <TAP_TERM_DEFAULT>;
+            bindings = <&kp H>, <&kp MINUS>;
+        };
+        td_m_lbk: tap_dance_m_lbk {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_M_LBK";
+            #binding-cells = <0>;
+            tapping-term-ms = <TAP_TERM_DEFAULT>;
+            bindings = <&kp M>, <&kp LBKT>;
+        };
+        td_dot_rbk: tap_dance_dot_rbk {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_DOT_RBK";
+            #binding-cells = <0>;
+            tapping-term-ms = <TAP_TERM_DEFAULT>;
+            bindings = <&kp DOT>, <&kp RBKT>;
+        };
+        td_com_bsp: tap_dance_com_bsp {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_COM_BSP";
+            #binding-cells = <0>;
+            tapping-term-ms = <TAP_TERM_DEFAULT>;
+            bindings = <&kp COMMA>, <&kp BACKSPACE>;
+        };
         td_sem_dqt: tap_dance_sem_dqt {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_SEM_DQT";
@@ -211,18 +243,18 @@ name: name##_macro {                      \
 
         green_layer {
             bindings = <
- //╭─────────────┬──────────┬─────────────┬───────────────┬─────────────────╮       ╭─────────────────┬──────────┬─────────────────┬──────────┬────────────────╮
- //│  Q          │  W       │    E        │   R           │  T              │       │  Y              │  U       │         I       │  O       │        P       │
-     &kp Q         &kp W        &kp E        &kp R          &kp T                     &kp Y             &kp U      &kp I             &kp O      &kp P
- //├─────────────┼──────────┼─────────────┼───────────────┼─────────────────┤       ├─────────────────┼──────────┼─────────────────┼──────────┼────────────────┤
- //│  A          │  S       │    D        │   F           │  G              │       │  H              │  J       │         K       │  L       │       ' "      │
-     &lt L_RED A   HRML(S,       D,           F)            &lt L_YELLOW G            &kp H             HRMR(J,          K,           L)        &td_sem_dqt
- //├─────────────┼──────────┼─────────────┼───────────────┼─────────────────┤       ├─────────────────┼──────────┼─────────────────┼──────────┼────────────────┤
- //│  Z          │  X       │    C        │   V           │  B              │       │  N              │  M       │        , <      │ . >      │       / ?      │
-     &kp Z         &kp X      &kp C         &td_v_l3        &kp B                     &kp N             &kp M      &td_com_tab       &kp DOT    &kp FSLH
- //╰─────────────┴──────────┴─────────────┼───────────────┼─────────────────┤       ├─────────────────┼──────────┼─────────────────┴──────────┴────────────────╯
-                                        &lt L_BLUE RETURN   &kp SPACE                 &td_lsw_return   &kp ESCAPE
- //                                   ╰───────────────────┴─────────────────╯       ╰─────────────────┴──────────╯
+ //╭────────────────┬──────────┬─────────────┬───────────────┬─────────────────╮       ╭─────────────────┬──────────┬─────────────────┬──────────┬────────────────╮
+ //│  Q GAMING      │  W       │    E        │   R           │  T              │       │  Y              │  U       │         I       │  O       │        P       │
+     &lt L_GAMING Q   &kp W        &kp E        &kp R          &kp T                     &kp Y             &kp U      &kp I             &kp O      &kp P
+ //├────────────────┼──────────┼─────────────┼───────────────┼─────────────────┤       ├─────────────────┼──────────┼─────────────────┼──────────┼────────────────┤
+ //│  A             │  S       │    D        │   F           │  G              │       │  H              │  J       │         K       │  L       │       ' "      │
+     &lt L_RED A      HRML(S,       D,           F)            &lt L_YELLOW G            &kp H             HRMR(J,          K,           L)        &td_sem_dqt
+ //├────────────────┼──────────┼─────────────┼───────────────┼─────────────────┤       ├─────────────────┼──────────┼─────────────────┼──────────┼────────────────┤
+ //│  Z             │  X       │    C        │   V           │  B              │       │  N              │  M       │        , <      │ . >      │       / ?      │
+     &kp Z            &kp X      &kp C         &td_v_l3        &kp B                     &kp N             &kp M      &td_com_tab       &kp DOT    &kp FSLH
+ //╰────────────────┴──────────┴─────────────┼───────────────┼─────────────────┤       ├─────────────────┼──────────┼─────────────────┴──────────┴────────────────╯
+                                           &lt L_BLUE RETURN       &kp SPACE                 &td_lsw_return   &kp ESCAPE
+ //                                      ╰───────────────────┴─────────────────╯       ╰─────────────────┴──────────╯
      >;
  };
 
@@ -249,11 +281,11 @@ name: name##_macro {                      \
  //│               │ SCROLL UP     │   SHIFT   │ SCROLL DN     │              │   │            │             │             │             │            │
      &none           &kp PG_UP       &kp LSHFT   &kp PG_DN       &none              &td_i3_f10   &td_i3_7      &td_i3_8      &td_i3_9      &td_i3_f12
  //├───────────────┼───────────────┼───────────┼───────────────┼──────────────┤   ├────────────┼─────────────┼─────────────┼─────────────┼────────────┤
- //│               │  NXTTAB       │           │   PRVTAB      │              │   │            │             │             │             │            │
-     &none           &kp LC(PG_UP)   &none       &kp LC(PG_DN)   &none              &td_i3_0     &td_i3_4      &td_i3_5      &td_i3_6      &td_i3_f11
+ //│               │  NXTTAB       │ GAM LAYR  │   PRVTAB      │              │   │            │             │             │             │            │
+     &none           &kp LC(PG_UP)   &mak_l5     &kp LC(PG_DN)   &none              &td_i3_0     &td_i3_4      &td_i3_5      &td_i3_6      &td_i3_f11
  //├───────────────┼───────────────┼───────────┼───────────────┼──────────────┤   ├────────────┼─────────────┼─────────────┼─────────────┼────────────┤
  //│               │               │           │               │              │   │            │             │             │             │            │
-     &none           &vim_w          &vim_q       &vim_wq        &mak_l5            &td_i3_f9    &td_i3_1      &td_i3_2      &td_i3_3      &mak_l4
+     &none           &vim_w          &vim_q       &vim_wq        &none            &td_i3_f9    &td_i3_1      &td_i3_2      &td_i3_3      &mak_l4
  //╰───────────────┴───────────────┴───────────┼───────────────┼──────────────┤   ├────────────┼─────────────┼─────────────┴─────────────┴────────────╯
                                                           &mak_l3     &none         &mak_l1     &kp ESCAPE
  //                                                     ╰──────────┴──────────╯   ╰──────────┴───────────────╯
@@ -279,18 +311,20 @@ name: name##_macro {                      \
 
         gaming_layer {
             bindings = <
-        //╭──────────┬──────────┬─────────────┬──────────────┬──────────╮       ╭──────────────┬──────────────┬─────────────────┬────────────────┬────────────────╮
-        //│  Q       │  W       │    E        │   R          │  T       │       │  Y           │  U           │         I       │  O             │        P       │
-            &none      &none        &none        &none         &none              &ht RCTRL Y    &kp U          &kp PG_DN         &kp O            &ht RSHFT P
-        //├──────────┼──────────┼─────────────┼──────────────┼──────────┤       ├──────────────┼──────────────┼─────────────────┼────────────────┼────────────────┤
-        //│  A       │  S       │    D        │   F          │  G       │       │  H           │  J           │         K       │  L             │       ' "      │
-            &none      &none        &none        &none         &none              &kp H          &kp J          &kp K             &kp L            &td_sem_dqt
-        //├──────────┼──────────┼─────────────┼──────────────┼──────────┤       ├──────────────┼──────────────┼─────────────────┼────────────────┼────────────────┤
-        //│  Z       │  X       │    C        │   V          │  B       │       │  N           │  M           │        , <      │ . >            │       / ?      │
-            &none      &none      &none         &none          &none              &kp N          &kp M          &td_com_tab       &kp DOT          &kp FSLH
-        //╰──────────┴──────────┴─────────────┼──────────────┼──────────┤       ├──────────────┼──────────────┼─────────────────┴────────────────┴────────────────╯
-                                                   &mak_l1     &kp SPACE          &kp SPACE      &kp RALT
-        //                                        ╰──────────┴──────────╯       ╰──────────────┴──────────────╯
+        //╭────────────┬───────────┬─────────────┬──────────────┬──────────╮       ╭──────────────┬──────────────┬─────────────────┬────────────────┬────────────────╮
+        //│  ?         │  `        │  ALT + F4   │   ?          │  INS     │       │  Y           │  U           │         I       │  O             │        P       │
+            &none        &kp GRAVE   &kp LA(F4)    &none          &kp INS            &ht RCTRL Y    &kp U          &kp PG_DN         &kp O            &ht RSHFT P
+        //├────────────┼───────────┼─────────────┼──────────────┼──────────┤       ├──────────────┼──────────────┼─────────────────┼────────────────┼────────────────┤
+        //│  DEL       │  END      │    ?        │   ?          │  ?       │       │  H           │  J           │         K       │  L             │       ' "      │
+            &kp DEL      &kp END      &none        &none          &none              &td_h_neg      &kp J          &kp K             &kp L            &td_sem_dqt
+        //├────────────┼───────────┼─────────────┼──────────────┼──────────┤       ├──────────────┼──────────────┼─────────────────┼────────────────┼────────────────┤
+        //│  ?         │  ?        │    ?        │   ?          │  ?       │       │  N           │  M           │        , <      │ . >            │       / ?      │
+            &none        &none       &none         &none          &none              &kp N          &td_m_lbk      &td_com_bsp       &td_dot_rbk      &kp FSLH
+        //╰────────────┴───────────┴─────────────┼──────────────┼──────────┤       ├──────────────┼──────────────┼─────────────────┴────────────────┴────────────────╯
+                                                      &mak_l1     &kp LWIN           &kp SPACE      &kp RALT
+        //                                           ╰──────────┴──────────╯       ╰──────────────┴──────────────╯
+        // need: - (attack room), [ (enemys), ] (need weapon)
+        // done: ` (console), ins (shad.cfg), del (ready), end (unready), backspace (smiley), ' (status),
             >;
         };
     };
